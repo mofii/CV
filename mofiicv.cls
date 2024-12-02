@@ -87,24 +87,62 @@
 %	CHARTS
 %---------------------------------------------------------------------------------------- 
 
-\newcounter{barcount}
+\newcommand{\tickandlabel}[2]{%
+%#1: x location
+%#2: label
+\draw [densely dotted,very thick,color=gray!50] (#1,-\chartheight-\barsep/2) -- (#1 ,0);
+%\draw [thick,color=black] (#1,-\chartheight-\barsep/2) -- 
+%    (#1 ,-\chartheight+\barsep*2/3);
+\node [label={[rotate=60, anchor=east]below:#2}] at (#1,-\chartheight) {};
+}
+
+\newcommand{\calcticklocation}[1]{
+    \pgfmathparse{\tickstart+\tickspan*#1}
+	\let#1\pgfmathresult
+}
 
 % Environment to hold a new bar chart
-\newenvironment{barchart}[1]{ % The only parameter is the maximum bar width, in cm
+\newenvironment{barchart}[1]{
+%#1: Maximum bar width, in cm
+% This section is only run once
+\newcounter{barcount}
 	\newcommand{\barwidth}{0.35}
 	\newcommand{\barsep}{0.2}
-	
+    \newcommand{\tickstart}{0}
+    \newcommand{\tickend}{0}
+    \newcommand{\tickspan}{0}
+    \newcommand{\numticks}{5}
+    \newcommand{\tickone}{0}
+    \newcommand{\ticktwo}{0.25}
+    \newcommand{\tickthree}{0.5}
+    \newcommand{\tickfour}{0.75}
+    \newcommand{\tickfive}{1}
+    \newcommand{\chartheight}{0}
+
+    % calc ticks start and end
+    \pgfmathparse{#1}
+	\let\barsize\pgfmathresult
+    \let\tickend\barsize
+    \pgfmathparse{\tickend*0.02}
+	\let\tickstart\pgfmathresult
+    \pgfmathparse{\tickend-\tickstart}
+	\let\tickspan\pgfmathresult
+    %calc each tick location
+    \calcticklocation{\tickone}
+    \calcticklocation{\ticktwo}
+    \calcticklocation{\tickthree}
+    \calcticklocation{\tickfour}
+    \calcticklocation{\tickfive}
+
+    
 	% Command to add a bar to the bar chart
-	\newcommand{\baritem}[2]{ % The first argument is the bar label and the second is the percentage the current bar should take up of the total width
+	\newcommand{\baritem}[2]{ 
+    %#1: bar label
+    %#2: bar width in percentage of chart width
 		\pgfmathparse{##2}
 		\let\perc\pgfmathresult
-		
-		\pgfmathparse{#1}
-		\let\barsize\pgfmathresult
-		
 		\pgfmathparse{\barsize*##2/100}
 		\let\barone\pgfmathresult
-		
 		\pgfmathparse{(\barwidth*\thebarcount)+(\barsep*\thebarcount)}
 		\let\barx\pgfmathresult
 		
@@ -116,7 +154,14 @@
 	\begin{tikzpicture}
 		\setcounter{barcount}{0}
 }{
-	
+    % This is run after end{document}
+    \pgfmathparse{(\barwidth*\thebarcount)+(\barsep*\thebarcount)}
+	\let\chartheight\pgfmathresult  
+    \tickandlabel{\tickone}{Ignorant}
+    \tickandlabel{\ticktwo}{Basic}
+    \tickandlabel{\tickthree}{Intermediate}
+    \tickandlabel{\tickfour}{Advanced}
+    \tickandlabel{\tickfive}{Expert}
 	\end{tikzpicture}
 }
 
@@ -170,4 +215,4 @@
 \newcommand{\slashsep}{\hspace{1em}/\hspace{1em}}
 
 % Keep hyp as last package, as it hooks into other packages.
-\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around link
+\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
