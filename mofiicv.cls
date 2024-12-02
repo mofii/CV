@@ -97,7 +97,7 @@
 }
 
 \newcommand{\calcticklocation}[1]{
-    \pgfmathparse{\tickstart+\tickspan*#1}
+    \pgfmathparse{\tickstart+\tickspan*#1/4}
 	\let#1\pgfmathresult
 }
 
@@ -113,10 +113,10 @@
     \newcommand{\tickspan}{0}
     \newcommand{\numticks}{5}
     \newcommand{\tickone}{0}
-    \newcommand{\ticktwo}{0.25}
-    \newcommand{\tickthree}{0.5}
-    \newcommand{\tickfour}{0.75}
-    \newcommand{\tickfive}{1}
+    \newcommand{\ticktwo}{1}
+    \newcommand{\tickthree}{2}
+    \newcommand{\tickfour}{3}
+    \newcommand{\tickfive}{4}
     \newcommand{\chartheight}{0}
 
     % calc ticks start and end
@@ -141,7 +141,7 @@
     %#2: bar width in percentage of chart width
 		\pgfmathparse{##2}
 		\let\perc\pgfmathresult
-		\pgfmathparse{\barsize*##2/100}
+		\pgfmathparse{\tickstart+\tickspan*##2/4}
 		\let\barone\pgfmathresult
 		\pgfmathparse{(\barwidth*\thebarcount)+(\barsep*\thebarcount)}
 		\let\barx\pgfmathresult
@@ -157,7 +157,7 @@
     % This is run after end{document}
     \pgfmathparse{(\barwidth*\thebarcount)+(\barsep*\thebarcount)}
 	\let\chartheight\pgfmathresult  
-    \tickandlabel{\tickone}{Ignorant}
+    \tickandlabel{\tickone}{Beginner}
     \tickandlabel{\ticktwo}{Basic}
     \tickandlabel{\tickthree}{Intermediate}
     \tickandlabel{\tickfour}{Advanced}
@@ -215,4 +215,4 @@
 \newcommand{\slashsep}{\hspace{1em}/\hspace{1em}}
 
 % Keep hyp as last package, as it hooks into other packages.
-\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
+\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around li
