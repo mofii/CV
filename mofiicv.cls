@@ -1,3 +1,20 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% mofii CV
+% LaTeX Class
+% Version 1.1.0 (12/2/2024)
+%
+%
+% Authors:
+% Morten Engelsen (mofii)
+%
+% Based on a template by Jan Vorisek (jan@vorisek.me) which again 
+% was based on works by Jan Küster (info@jankuester.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %----------------------------------------------------------------------------------------
 %	CLASS CONFIGURATION
 %----------------------------------------------------------------------------------------
@@ -10,13 +27,12 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-\usepackage{siunitx} % units, but used for easy interface to define table columns
+\usepackage{siunitx} % units, but here only used for easy interface to table columns
 \usepackage{enumitem}
 \setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
 \setlength{\parindent}{0mm} % Suppress paragraph indentation
 \pagestyle{empty} % No headers or footers
 \usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
-\usepackage{enumitem}
 
 %----------------------------------------------------------------------------------------
 %	PAGE LAYOUT
