@@ -157,9 +157,9 @@
     % This is run after end{document}
     \pgfmathparse{(\barwidth*\thebarcount)+(\barsep*\thebarcount)}
 	\let\chartheight\pgfmathresult  
-    \tickandlabel{\tickone}{Beginner}
+    \tickandlabel{\tickone}{Novice}
     \tickandlabel{\ticktwo}{Basic}
-    \tickandlabel{\tickthree}{Intermediate}
+    \tickandlabel{\tickthree}{Proficient}
     \tickandlabel{\tickfour}{Advanced}
     \tickandlabel{\tickfive}{Expert}
 	\end{tikzpicture}
@@ -215,4 +215,4 @@
 \newcommand{\slashsep}{\hspace{1em}/\hspace{1em}}
 
 % Keep hyp as last package, as it hooks into other packages.
-\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around li
+\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
