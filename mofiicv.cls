@@ -29,7 +29,7 @@
 %----------------------------------------------------------------------------------------
 \usepackage{siunitx} % units, but here only used for easy interface to table columns
 \usepackage{enumitem}
-\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,labelsep=4em}
 \setlength{\parindent}{0mm} % Suppress paragraph indentation
 \pagestyle{empty} % No headers or footers
 \usepackage{moresize} % Provides more font size commands (\HUGE and \ssmall)
@@ -233,5 +233,5 @@
 \newcommand{\skill}[1]{\skillfont{#1}\skillseparator{}}
 \newcommand{\skillend}[1]{\skillfont{#1}}
 
-% Keep hyp as last package, as it hooks into other packages.
-\usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
+% Keep hyperref as last package, as it hooks into other packages.
+\usepackage[hidelinks]{hyperref}
