@@ -224,7 +224,7 @@
 		\textbf{#2}% Entry heading text
 		\hfill% Horizontal whitespace
 		{\footnotesize \textbf{\textcolor{black}{#3}}}\\% Right-aligned entry qualifier text
-		#4 % Entry description text
+		{\setlength{\parindent}{1em}#4} % Entry description text
 	}\\\\}
 
 % Command to output a separator slash between lists, e.g. '  /  '
