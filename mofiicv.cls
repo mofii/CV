@@ -227,8 +227,11 @@
 		{\setlength{\parindent}{1em}#4} % Entry description text
 	}\\\\}
 
-% Command to output a separator slash between lists, e.g. '  /  '
-\newcommand{\slashsep}{\hspace{1em}/\hspace{1em}}
+% Skill commands
+\newcommand{\skillseparator}{\hspace{1em}/\hspace{1em}}
+\newcommand{\skillfont}[1]{\texttt{#1}}
+\newcommand{\skill}[1]{\skillfont{#1}\skillseparator{}}
+\newcommand{\skillend}[1]{\skillfont{#1}}
 
 % Keep hyp as last package, as it hooks into other packages.
 \usepackage[hidelinks]{hyperref} % Required for links but hide the default boxes around links
